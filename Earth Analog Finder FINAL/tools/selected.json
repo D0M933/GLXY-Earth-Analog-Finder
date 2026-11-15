@@ -1,0 +1,947 @@
+[
+ {
+  "lat": -72.5,
+  "lon": 22.5,
+  "elevM": 2189,
+  "tempC": -28.6,
+  "rainMmDay": 0.29,
+  "snowCm": null,
+  "reliefSdM": 578,
+  "cold": 71,
+  "arid": 57,
+  "relief": 72,
+  "ice": 100,
+  "bestFor": [
+   [
+    "dm",
+    87
+   ],
+   [
+    "cr",
+    80
+   ],
+   [
+    "ap",
+    80
+   ]
+  ]
+ },
+ {
+  "lat": -77.5,
+  "lon": 162.5,
+  "elevM": 860,
+  "tempC": -24.6,
+  "rainMmDay": 0.2,
+  "snowCm": null,
+  "reliefSdM": 666,
+  "cold": 66,
+  "arid": 64,
+  "relief": 83,
+  "ice": 100,
+  "bestFor": [
+   [
+    "dm",
+    83
+   ],
+   [
+    "ap",
+    77
+   ],
+   [
+    "cr",
+    76
+   ]
+  ]
+ },
+ {
+  "lat": 82.5,
+  "lon": -72.5,
+  "elevM": 910,
+  "tempC": -18.5,
+  "rainMmDay": 0.67,
+  "snowCm": 36.9,
+  "reliefSdM": 446,
+  "cold": 58,
+  "arid": 41,
+  "relief": 56,
+  "ice": 74,
+  "bestFor": [
+   [
+    "hp",
+    81
+   ],
+   [
+    "dm",
+    80
+   ],
+   [
+    "cr",
+    75
+   ]
+  ]
+ },
+ {
+  "lat": 37.5,
+  "lon": 87.5,
+  "elevM": 4315,
+  "tempC": -3.9,
+  "rainMmDay": 0.12,
+  "snowCm": 5.9,
+  "reliefSdM": 398,
+  "cold": 39,
+  "arid": 74,
+  "relief": 50,
+  "ice": 12,
+  "bestFor": [
+   [
+    "lm",
+    85
+   ],
+   [
+    "jz",
+    85
+   ],
+   [
+    "mh",
+    82
+   ]
+  ]
+ },
+ {
+  "lat": 27.5,
+  "lon": 37.5,
+  "elevM": 1187,
+  "tempC": 20.8,
+  "rainMmDay": 0.05,
+  "snowCm": 0,
+  "reliefSdM": 231,
+  "cold": 6,
+  "arid": 90,
+  "relief": 29,
+  "ice": 0,
+  "bestFor": [
+   [
+    "tp",
+    95
+   ],
+   [
+    "mh",
+    92
+   ],
+   [
+    "lm",
+    90
+   ]
+  ]
+ },
+ {
+  "lat": 22.5,
+  "lon": 17.5,
+  "elevM": 703,
+  "tempC": 23.9,
+  "rainMmDay": 0.04,
+  "snowCm": 0,
+  "reliefSdM": 133,
+  "cold": 1,
+  "arid": 95,
+  "relief": 17,
+  "ice": 0,
+  "bestFor": [
+   [
+    "tp",
+    92
+   ],
+   [
+    "mh",
+    89
+   ],
+   [
+    "lm",
+    87
+   ]
+  ]
+ },
+ {
+  "lat": -82.5,
+  "lon": 77.5,
+  "elevM": 3855,
+  "tempC": -52.2,
+  "rainMmDay": 0.05,
+  "snowCm": null,
+  "reliefSdM": 67,
+  "cold": 100,
+  "arid": 90,
+  "relief": 8,
+  "ice": 100,
+  "bestFor": [
+   [
+    "fa",
+    87
+   ],
+   [
+    "ap",
+    87
+   ],
+   [
+    "hw",
+    86
+   ]
+  ]
+ },
+ {
+  "lat": 37.5,
+  "lon": 72.5,
+  "elevM": 4290,
+  "tempC": -4.7,
+  "rainMmDay": 0.33,
+  "snowCm": 10.9,
+  "reliefSdM": 698,
+  "cold": 40,
+  "arid": 55,
+  "relief": 87,
+  "ice": 22,
+  "bestFor": [
+   [
+    "vm",
+    83
+   ],
+   [
+    "gc",
+    75
+   ],
+   [
+    "am",
+    75
+   ]
+  ]
+ },
+ {
+  "lat": -72.5,
+  "lon": 107.5,
+  "elevM": 2860,
+  "tempC": -49.9,
+  "rainMmDay": 0.22,
+  "snowCm": null,
+  "reliefSdM": 49,
+  "cold": 100,
+  "arid": 62,
+  "relief": 6,
+  "ice": 100,
+  "bestFor": [
+   [
+    "ap",
+    84
+   ],
+   [
+    "fa",
+    83
+   ],
+   [
+    "hw",
+    82
+   ]
+  ]
+ },
+ {
+  "lat": 22.5,
+  "lon": 27.5,
+  "elevM": 373,
+  "tempC": 23.3,
+  "rainMmDay": 0,
+  "snowCm": 0,
+  "reliefSdM": 56,
+  "cold": 2,
+  "arid": 100,
+  "relief": 7,
+  "ice": 0,
+  "bestFor": [
+   [
+    "tp",
+    91
+   ],
+   [
+    "mh",
+    88
+   ],
+   [
+    "lm",
+    86
+   ]
+  ]
+ },
+ {
+  "lat": 47.5,
+  "lon": 92.5,
+  "elevM": 1659,
+  "tempC": 3.1,
+  "rainMmDay": 0.41,
+  "snowCm": 8.5,
+  "reliefSdM": 609,
+  "cold": 29,
+  "arid": 51,
+  "relief": 76,
+  "ice": 17,
+  "bestFor": [
+   [
+    "gc",
+    79
+   ],
+   [
+    "vm",
+    74
+   ],
+   [
+    "lm",
+    73
+   ]
+  ]
+ },
+ {
+  "lat": 77.5,
+  "lon": -22.5,
+  "elevM": 455,
+  "tempC": -14.6,
+  "rainMmDay": 0.87,
+  "snowCm": 32.7,
+  "reliefSdM": 192,
+  "cold": 53,
+  "arid": 36,
+  "relief": 24,
+  "ice": 65,
+  "bestFor": [
+   [
+    "hp",
+    85
+   ],
+   [
+    "ap",
+    71
+   ],
+   [
+    "dm",
+    64
+   ]
+  ]
+ },
+ {
+  "lat": -82.5,
+  "lon": 2.5,
+  "elevM": 2305,
+  "tempC": -44.5,
+  "rainMmDay": 0.17,
+  "snowCm": null,
+  "reliefSdM": 60,
+  "cold": 93,
+  "arid": 67,
+  "relief": 8,
+  "ice": 100,
+  "bestFor": [
+   [
+    "ap",
+    87
+   ],
+   [
+    "fa",
+    81
+   ],
+   [
+    "hw",
+    80
+   ]
+  ]
+ },
+ {
+  "lat": 72.5,
+  "lon": -112.5,
+  "elevM": 133,
+  "tempC": -13.8,
+  "rainMmDay": 0.98,
+  "snowCm": 32,
+  "reliefSdM": 123,
+  "cold": 52,
+  "arid": 34,
+  "relief": 15,
+  "ice": 64,
+  "bestFor": [
+   [
+    "hp",
+    83
+   ],
+   [
+    "ap",
+    71
+   ],
+   [
+    "fa",
+    60
+   ]
+  ]
+ },
+ {
+  "lat": -22.5,
+  "lon": -67.5,
+  "elevM": 4720,
+  "tempC": 1.1,
+  "rainMmDay": 0.37,
+  "snowCm": 3.4,
+  "reliefSdM": 550,
+  "cold": 32,
+  "arid": 53,
+  "relief": 69,
+  "ice": 7,
+  "bestFor": [
+   [
+    "gc",
+    83
+   ],
+   [
+    "lm",
+    78
+   ],
+   [
+    "mh",
+    75
+   ]
+  ]
+ },
+ {
+  "lat": -82.5,
+  "lon": -97.5,
+  "elevM": 1998,
+  "tempC": -33.8,
+  "rainMmDay": 0.34,
+  "snowCm": null,
+  "reliefSdM": 54,
+  "cold": 78,
+  "arid": 54,
+  "relief": 7,
+  "ice": 100,
+  "bestFor": [
+   [
+    "ap",
+    90
+   ],
+   [
+    "fa",
+    74
+   ],
+   [
+    "hw",
+    73
+   ]
+  ]
+ },
+ {
+  "lat": -72.5,
+  "lon": -62.5,
+  "elevM": 1277,
+  "tempC": -19.9,
+  "rainMmDay": 1.04,
+  "snowCm": null,
+  "reliefSdM": 507,
+  "cold": 60,
+  "arid": 33,
+  "relief": 63,
+  "ice": 100,
+  "bestFor": [
+   [
+    "dm",
+    86
+   ],
+   [
+    "ap",
+    74
+   ],
+   [
+    "cr",
+    73
+   ]
+  ]
+ },
+ {
+  "lat": 37.5,
+  "lon": 102.5,
+  "elevM": 3060,
+  "tempC": 1.2,
+  "rainMmDay": 1.18,
+  "snowCm": 9.7,
+  "reliefSdM": 732,
+  "cold": 32,
+  "arid": 31,
+  "relief": 92,
+  "ice": 19,
+  "bestFor": [
+   [
+    "vm",
+    79
+   ],
+   [
+    "gc",
+    68
+   ],
+   [
+    "am",
+    67
+   ]
+  ]
+ },
+ {
+  "lat": -72.5,
+  "lon": 62.5,
+  "elevM": 1838,
+  "tempC": -34.7,
+  "rainMmDay": 0.39,
+  "snowCm": null,
+  "reliefSdM": 158,
+  "cold": 80,
+  "arid": 52,
+  "relief": 20,
+  "ice": 100,
+  "bestFor": [
+   [
+    "ap",
+    89
+   ],
+   [
+    "dm",
+    77
+   ],
+   [
+    "fa",
+    76
+   ]
+  ]
+ },
+ {
+  "lat": 42.5,
+  "lon": 47.5,
+  "elevM": 942,
+  "tempC": 9.2,
+  "rainMmDay": 1.12,
+  "snowCm": 6.1,
+  "reliefSdM": 980,
+  "cold": 21,
+  "arid": 32,
+  "relief": 100,
+  "ice": 12,
+  "bestFor": [
+   [
+    "vm",
+    76
+   ],
+   [
+    "mh",
+    64
+   ],
+   [
+    "lm",
+    64
+   ]
+  ]
+ },
+ {
+  "lat": -42.5,
+  "lon": -67.5,
+  "elevM": 838,
+  "tempC": 9.9,
+  "rainMmDay": 0.53,
+  "snowCm": 3,
+  "reliefSdM": 377,
+  "cold": 20,
+  "arid": 46,
+  "relief": 47,
+  "ice": 6,
+  "bestFor": [
+   [
+    "mh",
+    82
+   ],
+   [
+    "lm",
+    82
+   ],
+   [
+    "tp",
+    80
+   ]
+  ]
+ },
+ {
+  "lat": 67.5,
+  "lon": 167.5,
+  "elevM": 645,
+  "tempC": -11.1,
+  "rainMmDay": 1.27,
+  "snowCm": 29.2,
+  "reliefSdM": 260,
+  "cold": 48,
+  "arid": 29,
+  "relief": 33,
+  "ice": 58,
+  "bestFor": [
+   [
+    "hp",
+    82
+   ],
+   [
+    "ap",
+    65
+   ],
+   [
+    "lm",
+    63
+   ]
+  ]
+ },
+ {
+  "lat": -77.5,
+  "lon": -147.5,
+  "elevM": 282,
+  "tempC": -18.7,
+  "rainMmDay": 2.17,
+  "snowCm": null,
+  "reliefSdM": 289,
+  "cold": 58,
+  "arid": 19,
+  "relief": 36,
+  "ice": 100,
+  "bestFor": [
+   [
+    "dm",
+    76
+   ],
+   [
+    "ap",
+    75
+   ],
+   [
+    "hp",
+    68
+   ]
+  ]
+ },
+ {
+  "lat": -72.5,
+  "lon": -97.5,
+  "elevM": 186,
+  "tempC": -15,
+  "rainMmDay": 2.4,
+  "snowCm": null,
+  "reliefSdM": 139,
+  "cold": 53,
+  "arid": 17,
+  "relief": 17,
+  "ice": 100,
+  "bestFor": [
+   [
+    "ap",
+    75
+   ],
+   [
+    "dm",
+    68
+   ],
+   [
+    "hp",
+    64
+   ]
+  ]
+ },
+ {
+  "lat": -67.5,
+  "lon": 132.5,
+  "elevM": 1570,
+  "tempC": -24.7,
+  "rainMmDay": 1.1,
+  "snowCm": null,
+  "reliefSdM": 237,
+  "cold": 66,
+  "arid": 32,
+  "relief": 30,
+  "ice": 100,
+  "bestFor": [
+   [
+    "ap",
+    80
+   ],
+   [
+    "dm",
+    77
+   ],
+   [
+    "hp",
+    70
+   ]
+  ]
+ },
+ {
+  "lat": -52.5,
+  "lon": -72.5,
+  "elevM": 254,
+  "tempC": 4.5,
+  "rainMmDay": 3.51,
+  "snowCm": 6.3,
+  "reliefSdM": 243,
+  "cold": 27,
+  "arid": 10,
+  "relief": 30,
+  "ice": 13,
+  "bestFor": [
+   [
+    "lm",
+    74
+   ],
+   [
+    "tp",
+    71
+   ],
+   [
+    "mh",
+    69
+   ]
+  ]
+ },
+ {
+  "lat": -42.5,
+  "lon": 147.5,
+  "elevM": 344,
+  "tempC": 10.5,
+  "rainMmDay": 1.7,
+  "snowCm": 0.2,
+  "reliefSdM": 311,
+  "cold": 19,
+  "arid": 24,
+  "relief": 39,
+  "ice": 0,
+  "bestFor": [
+   [
+    "mh",
+    77
+   ],
+   [
+    "lm",
+    77
+   ],
+   [
+    "tp",
+    75
+   ]
+  ]
+ },
+ {
+  "lat": -42.5,
+  "lon": 172.5,
+  "elevM": 935,
+  "tempC": 7.1,
+  "rainMmDay": 3.86,
+  "snowCm": 3.9,
+  "reliefSdM": 487,
+  "cold": 24,
+  "arid": 8,
+  "relief": 61,
+  "ice": 8,
+  "bestFor": [
+   [
+    "lm",
+    70
+   ],
+   [
+    "gc",
+    70
+   ],
+   [
+    "mh",
+    68
+   ]
+  ]
+ },
+ {
+  "lat": -37.5,
+  "lon": -57.5,
+  "elevM": 14,
+  "tempC": 14.5,
+  "rainMmDay": 2.9,
+  "snowCm": 0,
+  "reliefSdM": 33,
+  "cold": 14,
+  "arid": 14,
+  "relief": 4,
+  "ice": 0,
+  "bestFor": [
+   [
+    "tp",
+    70
+   ],
+   [
+    "mh",
+    67
+   ],
+   [
+    "lm",
+    67
+   ]
+  ]
+ },
+ {
+  "lat": -32.5,
+  "lon": -67.5,
+  "elevM": 535,
+  "tempC": 19.2,
+  "rainMmDay": 1.02,
+  "snowCm": 0.1,
+  "reliefSdM": 94,
+  "cold": 8,
+  "arid": 33,
+  "relief": 12,
+  "ice": 0,
+  "bestFor": [
+   [
+    "tp",
+    77
+   ],
+   [
+    "mh",
+    74
+   ],
+   [
+    "lm",
+    72
+   ]
+  ]
+ },
+ {
+  "lat": -32.5,
+  "lon": 22.5,
+  "elevM": 878,
+  "tempC": 17.9,
+  "rainMmDay": 0.82,
+  "snowCm": 0.2,
+  "reliefSdM": 334,
+  "cold": 9,
+  "arid": 38,
+  "relief": 42,
+  "ice": 0,
+  "bestFor": [
+   [
+    "mh",
+    82
+   ],
+   [
+    "tp",
+    80
+   ],
+   [
+    "lm",
+    78
+   ]
+  ]
+ },
+ {
+  "lat": -32.5,
+  "lon": 117.5,
+  "elevM": 309,
+  "tempC": 16.8,
+  "rainMmDay": 1.04,
+  "snowCm": 0,
+  "reliefSdM": 38,
+  "cold": 11,
+  "arid": 33,
+  "relief": 5,
+  "ice": 0,
+  "bestFor": [
+   [
+    "tp",
+    76
+   ],
+   [
+    "mh",
+    73
+   ],
+   [
+    "lm",
+    71
+   ]
+  ]
+ },
+ {
+  "lat": -32.5,
+  "lon": 137.5,
+  "elevM": 100,
+  "tempC": 18.9,
+  "rainMmDay": 0.63,
+  "snowCm": 0,
+  "reliefSdM": 184,
+  "cold": 8,
+  "arid": 43,
+  "relief": 23,
+  "ice": 0,
+  "bestFor": [
+   [
+    "tp",
+    82
+   ],
+   [
+    "mh",
+    79
+   ],
+   [
+    "lm",
+    77
+   ]
+  ]
+ },
+ {
+  "lat": -32.5,
+  "lon": 152.5,
+  "elevM": 40,
+  "tempC": 19.6,
+  "rainMmDay": 3.09,
+  "snowCm": 0,
+  "reliefSdM": 61,
+  "cold": 7,
+  "arid": 13,
+  "relief": 8,
+  "ice": 0,
+  "bestFor": [
+   [
+    "tp",
+    70
+   ],
+   [
+    "mh",
+    68
+   ],
+   [
+    "lm",
+    66
+   ]
+  ]
+ },
+ {
+  "lat": -27.5,
+  "lon": -57.5,
+  "elevM": 67,
+  "tempC": 21.6,
+  "rainMmDay": 4.18,
+  "snowCm": 0,
+  "reliefSdM": 11,
+  "cold": 5,
+  "arid": 7,
+  "relief": 1,
+  "ice": 0,
+  "bestFor": [
+   [
+    "tp",
+    67
+   ],
+   [
+    "mh",
+    64
+   ],
+   [
+    "lm",
+    62
+   ]
+  ]
+ }
+]

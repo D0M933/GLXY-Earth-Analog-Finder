@@ -1,0 +1,17 @@
+{
+ "hp": {
+  "cold": 100,
+  "basis": "derived",
+  "why": "Checked in v3.2 against the Mars Climate Database (MCD 6.2, climatology average-dust scenario, 2 m air temperature at 42.4 S 70.5 E, averaged over 12 seasons x 8 times of day = 96 runs): 205.6 K (-67.5 C), colder than the -50 C that scores 100. The earlier value (65) was a guess and made Hellas look warmer than it is."
+ },
+ "vm": {
+  "cold": 100,
+  "basis": "derived",
+  "why": "Checked in v3.2 against the Mars Climate Database (MCD 6.2, climatology average-dust scenario, 2 m air temperature at 10 S 65 W, averaged over 12 seasons x 8 times of day = 96 runs): 217.8 K (-55.4 C), colder than the -50 C that scores 100. The earlier value (70) was a guess."
+ },
+ "lm": {
+  "cold": 25,
+  "basis": "estimate",
+  "why": "Not verified. No published annual mean temperature for the Lacus Mortis pit floor was found; Williams et al. (2022) give only the surface range of the Moon at mid-latitude (about 88 K to 359 K). The value 25 stays a rough estimate."
+ }
+}

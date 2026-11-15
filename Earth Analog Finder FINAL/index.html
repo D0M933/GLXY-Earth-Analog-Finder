@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en" data-body="Moon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Earth Analog Finder</title>
+<meta name="description" content="Pick a place on the Moon or Mars and find the places on Earth that are most like it, in plain language.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#v=1">Earth Analog Finder</a>
+    <nav class="nav" aria-label="More">
+      <a href="#v=limits" data-nav="limits">What Earth can't copy</a>
+      <a href="#v=sources" data-nav="sources">Sources &amp; how it was built</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <ol class="stepper" id="stepper" aria-label="Steps">
+      <li><button type="button" data-step="1"><span class="n">1</span>Select a Potential Area</button></li>
+      <li><button type="button" data-step="2"><span class="n">2</span>Tuning</button></li>
+      <li><button type="button" data-step="3"><span class="n">3</span>The Closest Places on Earth</button></li>
+    </ol>
+
+    <!-- STEP 1 -->
+    <section class="view" id="v1" aria-labelledby="h1">
+      <div class="intro">
+        <h1>Where on Earth is most like the <em>Moon</em> and <em>Mars</em>?</h1>
+        <p>Before astronauts and robots go to another world, they practise somewhere on Earth that feels similar. Choose a possible landing or base site, and we'll show you the Earth places that come closest, what they have in common, and where the comparison breaks down.</p>
+      </div>
+      <div class="sec-head">
+        <span class="n">Step 1</span><h2 id="h1">Select a Potential Area</h2>
+        <p>These are real candidate landing and base sites that space agencies have studied. Pick a world, then click a pin on the map or a name in the list.</p>
+      </div>
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="Choose a world">
+          <button type="button" data-body="Moon" aria-pressed="true">Moon</button>
+          <button type="button" data-body="Mars" aria-pressed="false">Mars</button>
+        </div>
+        <label class="lay"><span>Map layer</span><select id="layer1"></select></label>
+      </div>
+      <div class="pick">
+        <div class="map-col">
+          <div class="map" id="map1">
+            <svg id="svg1" viewBox="0 0 720 360" role="img" aria-label="Map of the chosen world with the candidate sites marked as numbered pins">
+              <rect width="720" height="360" fill="#000"></rect>
+              <image id="pm-base" x="0" y="0" width="720" height="360" preserveAspectRatio="none"></image>
+              <image id="pm-raster" x="0" y="0" width="720" height="360" preserveAspectRatio="none" opacity=".92" visibility="hidden"></image>
+              <g id="grat1"></g>
+              <g id="markers1"></g>
+            </svg>
+            <div class="zoom">
+              <button type="button" id="zin1" aria-label="Zoom in">+</button>
+              <button type="button" id="zout1" aria-label="Zoom out">&minus;</button>
+              <button type="button" id="zreset1" aria-label="Reset map view" title="Reset">&#8962;</button>
+            </div>
+            <div class="tip" id="tip1" hidden></div>
+          </div>
+          <div class="legend" id="legend1"></div>
+        </div>
+        <div>
+          <div class="pgr" id="pager" role="group" aria-label="Choose which sites to show">
+            <button type="button" data-page="0" aria-pressed="true">Sites 1&ndash;5</button>
+            <button type="button" data-page="1" aria-pressed="false">Sites 6&ndash;10</button>
+          </div>
+          <ol class="tlist" id="tlist"></ol>
+        </div>
+      </div>
+      <div class="picked" id="picked" aria-live="polite"></div>
+      <div class="nav-row"><span></span><button type="button" class="btn go" id="next1" disabled>Continue to Tuning &rarr;</button></div>
+    </section>
+
+    <!-- STEP 2 -->
+    <section class="view" id="v2" hidden aria-labelledby="h2">
+      <div class="sec-head">
+        <span class="n">Step 2</span><h2 id="h2">Tuning</h2>
+        <p>Every match is a blend of 11 features. Each target already counts its own signature features three times as much. Move a slider to tell us what <em>you</em> care about. This step is optional: you can go straight to the results.</p>
+      </div>
+      <p class="chosen" id="chosen2"></p>
+      <div class="sl" id="sliders"></div>
+      <div class="filt" id="filt">
+        <label for="stfilter"><b>Filter: Antarctic research stations</b><small>Whether an Earth area has a research station in it is not part of the match (every target would score the same, which pushed results toward Antarctic stations). Use this filter if you want to limit the list. It uses the COMNAP list of open Antarctic and sub-Antarctic stations; stations elsewhere in the world are not counted because we found no equally reliable global list.</small></label>
+        <select id="stfilter"><option value="any">Show all areas</option><option value="with">Only areas with an Antarctic station</option><option value="without">Only areas without an Antarctic station</option></select>
+      </div>
+      <div class="nav-row">
+        <button type="button" class="btn" id="back2">&larr; Back</button>
+        <span class="row-r"><button type="button" class="btn" id="reset-w">Reset sliders</button><button type="button" class="btn go" id="next2">See the closest places &rarr;</button></span>
+      </div>
+    </section>
+
+    <!-- STEP 3 -->
+    <section class="view" id="v3" hidden aria-labelledby="h3">
+            <div class="res">
+        <div class="map-col">
+          <div class="sec-head">
+        <span class="n">Step 3</span><h2 id="h3">The Closest Places on Earth</h2>
+        <p>All 806 land areas of Earth (5&deg; &times; 5&deg; cells) and 16 small named sites (1&deg; &times; 1&deg; boxes, marked &ldquo;small site&rdquo;) are scored on the same 11 features as your target and ranked together by similarity. Their box scores are corrected with a correction measured on 36 sample cells (see Sources). The map and list show up to the 35 most similar (fewer if a filter leaves fewer areas); the numbered dots are the top five. Click a dot or a name to see why. Every Earth score is computed from a named dataset, see <a href="#v=sources">Sources &amp; how it was built</a>.</p>
+      </div>
+          <div class="target-panel" id="tpanel" aria-live="polite"></div>
+          <p class="stab" id="stab" aria-live="polite"></p>
+          <div class="toolbar"><label class="lay"><span>Map layer</span><select id="layer3"></select></label></div>
+          <div class="map" id="map3">
+            <svg id="svg3" viewBox="0 0 720 360" role="img" aria-label="World map of Earth sites ranked by how closely they match the chosen target">
+              <rect class="sea" width="720" height="360"></rect>
+              <g id="grat3"></g>
+              <path id="land3" class="land"></path>
+              <path id="lake3" class="lake"></path>
+              <image id="em-raster" x="0" y="0" width="720" height="360" preserveAspectRatio="none" opacity=".92" visibility="hidden"></image>
+              <g id="markers3"></g>
+            </svg>
+            <div class="zoom">
+              <button type="button" id="zin3" aria-label="Zoom in">+</button>
+              <button type="button" id="zout3" aria-label="Zoom out">&minus;</button>
+              <button type="button" id="zreset3" aria-label="Reset map view" title="Reset">&#8962;</button>
+            </div>
+            <div class="tip" id="tip3" hidden></div>
+          </div>
+          <div class="legend" id="legend3"></div>
+          <section class="facts" id="facts" aria-live="polite" aria-label="Facts and satellite image for the selected area"></section>
+          <div class="detail" id="detail" aria-live="polite"></div>
+        </div>
+        <div class="rank-col">
+          <h3 id="rank-h">The 35 most similar Earth areas</h3>
+          <ol class="rank" id="rank" aria-labelledby="rank-h"></ol>
+          <button type="button" class="more" id="more">Show all sites</button>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button type="button" class="btn" id="back3">&larr; Back to Tuning</button>
+        <span class="row-r"><a class="btn" href="#v=limits">What Earth can't copy</a><button type="button" class="btn go" id="again">Start over</button></span>
+      </div>
+    </section>
+
+    <!-- LIMITS -->
+    <section class="view" id="vlimits" hidden aria-labelledby="l-h">
+      <div class="sec-head">
+        <span class="n">HONESTY CHECK</span><h2 id="l-h">What Earth can't copy</h2>
+        <p>No place on Earth is a perfect stand-in. A good analog is close on some things and far on others. These differences apply to every site.</p>
+      </div>
+      <div class="cards">
+        <div class="card"><h3>Gravity</h3><p>The Moon pulls with about one-sixth of Earth's gravity, and Mars with about 38%. Walking, digging and driving all behave differently there.</p></div>
+        <div class="card"><h3>Air</h3><p>The Moon has almost no atmosphere, and Mars's air is extremely thin, far below even the top of Mount Everest. Earth sites can't reproduce a vacuum or Mars's air pressure.</p></div>
+        <div class="card"><h3>Radiation</h3><p>Earth's magnetic field and thick air shield us from most space radiation. Nowhere on Earth's surface gives you the radiation that crews will face on the Moon or Mars.</p></div>
+        <div class="card"><h3>Dust &amp; rock</h3><p>Earth's wind and water wear dust smooth. Moon dust is sharp and clingy, and Earth ash or sand can only imitate it.</p></div>
+        <div class="card"><h3>Life</h3><p>Earth sites are full of microbes. That is great for practising how to search for signs of life, but it means Earth can't show us what a truly sterile surface is like.</p></div>
+      </div>
+      <div class="nav-row"><a class="btn" href="#v=1">&larr; Back to the steps</a><span></span></div>
+    </section>
+
+    <!-- SOURCES -->
+    <section class="view" id="vsources" hidden aria-labelledby="s-h">
+      <div class="sec-head">
+        <span class="n">TRANSPARENCY</span><h2 id="s-h">Sources &amp; how it was built</h2>
+        <p>Everything the scores are made from, how each one is calculated, how the site was put together, and what it cannot tell you.</p>
+      </div>
+
+      <div class="glance" aria-label="The project at a glance">
+        <div><strong>822</strong><span>Earth areas ranked: 806 land cells (5&deg; &times; 5&deg;) and 16 small named sites (1&deg; &times; 1&deg;)</span></div>
+        <div><strong>11</strong><span>features compared for every target and every Earth area</span></div>
+        <div><strong>0</strong><span>Earth scores typed in by hand; all 11 are computed from named datasets</span></div>
+        <div><strong>1,000</strong><span>seeded re-rankings behind each stability line</span></div>
+      </div>
+
+      <p class="note"><b>Please read:</b> the scores on this site are a draft for exploring, not for engineering decisions. Every Earth score is computed from a named dataset, but seven of the eleven are proxies (counts of mapped volcanoes and craters, remoteness, and a sample of a rock map), so they are definite numbers, not ground truth. The Moon and Mars scores are the team&rsquo;s own estimates, except the cold values: Mars cold was checked against the Mars Climate Database for every Mars target, Moon cold uses published LRO Diviner results, and one value (Lacus Mortis, 25) is still an unverified estimate.</p>
+
+      <nav class="jump" aria-label="Sections on this page">
+        <button type="button" data-jump="src-data">1 &middot; Data sources</button>
+        <button type="button" data-jump="src-scores">2 &middot; How the Earth scores work</button>
+        <button type="button" data-jump="src-built">3 &middot; How it was built</button>
+        <button type="button" data-jump="src-versions">4 &middot; Version history</button>
+        <button type="button" data-jump="src-limits">5 &middot; Known limits</button>
+      </nav>
+
+      <!-- 1 DATA SOURCES -->
+      <section class="blk" id="src-data" aria-labelledby="sd-h">
+        <h3 id="sd-h"><span class="bn">1</span>Data sources</h3>
+        <p class="lead">Each card names the dataset, who publishes it, and the one thing we use it for. Colour tags show the kind of publisher.</p>
+
+        <h4 class="grp">Earth: what the 822 areas are scored from</h4>
+        <div class="srcgrid">
+          <div class="src"><span class="tag t-nasa">NASA</span><a href="https://power.larc.nasa.gov" target="_blank" rel="noopener">NASA POWER</a><p>MERRA-2 climatology, 2001 to 2025: yearly air temperature, rainfall and snow depth. Feeds the cold, dryness and ice scores, and the facts panel.</p></div>
+          <div class="src"><span class="tag t-nasa">NASA</span><a href="https://ares.jsc.nasa.gov/engagement/activities/resources/crater-comparisons/earth-impact-database.pdf" target="_blank" rel="noopener">Earth Impact Database table (NASA JSC ARES)</a><p>182 confirmed impact structures with latitude, longitude and diameter. Feeds impact geology. We read it on 15 Nov 2026 and corrected one longitude that looks like a typo (Ames, Oklahoma, printed as 98.2&deg;E, used as 98.2&deg;W). The table is undated (its address suggests May 2018), so recent finds are missing.</p></div>
+          <div class="src"><span class="tag t-noaa">NOAA</span><a href="https://www.ngdc.noaa.gov/mgg/global/" target="_blank" rel="noopener">ETOPO1 global relief</a><p>Heights at 9 points per area (rugged ground), the 40 km elevation line, average height and slope. Reached through <a href="https://www.opentopodata.org" target="_blank" rel="noopener">OpenTopoData</a>, which only serves NOAA&rsquo;s ice-surface file. We checked 60 points against NOAA&rsquo;s own elevation service: median difference 3&nbsp;m, mean 9.7&nbsp;m, largest 71&nbsp;m (interpolation), which does not change any score.</p></div>
+          <div class="src"><span class="tag t-noaa">NOAA</span><a href="https://www.ngdc.noaa.gov/hazel/view/hazards/volcano/loc-search" target="_blank" rel="noopener">NCEI Volcano Location Database</a><p>A US government service that republishes the <a href="https://volcano.si.edu/" target="_blank" rel="noopener">Smithsonian Global Volcanism Program</a> list. The only volcano source: it feeds volcanic basalt, lava-tube terrain and the volcano fact.</p></div>
+          <div class="src"><span class="tag t-sci">Science</span><a href="https://github.com/PolarGeospatialCenter/comnap-antarctic-facilities" target="_blank" rel="noopener">COMNAP Antarctic Facilities</a><p>Council of Managers of National Antarctic Programs, hosted by the Polar Geospatial Center. The 75 stations marked &ldquo;Open&rdquo;. Used only for the Step 2 filter; covers Antarctica and the sub-Antarctic only. Cite as &ldquo;COMNAP 2017&rdquo;; free for educational, non-commercial use.</p></div>
+          <div class="src"><span class="tag t-sci">Science</span><a href="https://macrostrat.org" target="_blank" rel="noopener">Macrostrat</a><p>University of Wisconsin&ndash;Madison, National Science Foundation funded, compiled from national geological surveys including the USGS. Rock types at 9 points per area: feeds dust, salts and minerals, and highland rock.</p></div>
+          <div class="src"><span class="tag t-open">Open data</span><a href="https://www.naturalearthdata.com" target="_blank" rel="noopener">Natural Earth</a><p>Public-domain, cartographer-made data: towns of 20,000 or more (remoteness), playas (salts and minerals) and region names.</p></div>
+        </div>
+        <p class="why-kept"><b>Why Macrostrat and Natural Earth are still here:</b> neither is a government or space-agency source, but we could not reach a government alternative without a login, so we kept them and say so. Wikidata, used in versions 3.2 to 5.1, is no longer used anywhere. Earth data was gathered on 14 Nov 2026 (806 cells) and 15 Nov 2026 (16 small sites).</p>
+
+        <h4 class="grp">Moon and Mars: targets, temperatures and elevation lines</h4>
+        <div class="srcgrid">
+          <div class="src"><span class="tag t-nasa">NASA</span><a href="https://svs.gsfc.nasa.gov/5013" target="_blank" rel="noopener">Artemis III candidate regions</a><p>NASA&rsquo;s 13 candidate landing regions (Nobile Rim, Amundsen Rim and de Gerlache Rim were added from this list in v4).</p></div>
+          <div class="src"><span class="tag t-esa">ESA</span><a href="https://exploration.esa.int/mars/54724-oxia-planum/" target="_blank" rel="noopener">Oxia Planum</a> and <a href="https://exploration.esa.int/mars/54721-mawrth-vallis" target="_blank" rel="noopener">Mawrth Vallis</a><p>ESA&rsquo;s Mars landing-site pages. Gusev crater is NASA&rsquo;s Spirit rover site.</p></div>
+          <div class="src"><span class="tag t-usgs">USGS</span><a href="https://planetarynames.wr.usgs.gov" target="_blank" rel="noopener">Gazetteer of Planetary Nomenclature</a><p>Crater positions for the Moon and Mars targets.</p></div>
+          <div class="src"><span class="tag t-nasa">NASA</span><a href="https://trek.nasa.gov/moon/" target="_blank" rel="noopener">Moon Trek</a> and <a href="https://trek.nasa.gov/mars/" target="_blank" rel="noopener">Mars Trek</a><p>Measured elevation lines (LRO LOLA, MGS MOLA) and the live map layers: LOLA elevation, slope and roughness, Diviner night-time temperature and rock abundance, MOLA elevation, TES thermal inertia and albedo.</p></div>
+          <div class="src"><span class="tag t-nasa">NASA</span><a href="https://pds.nasa.gov" target="_blank" rel="noopener">Planetary Data System</a> &middot; <a href="https://pds-geosciences.wustl.edu/missions/lro/" target="_blank" rel="noopener">LRO data</a> &middot; <a href="https://pds-geosciences.wustl.edu/missions/lro/diviner.htm" target="_blank" rel="noopener">Diviner</a><p>The archives behind the lunar data. We use published Diviner results to say how cold the poles are and how steady pit floors stay (not yet computed from the raw Diviner files).</p></div>
+          <div class="src"><span class="tag t-sci">Science</span><a href="https://www-mars.lmd.jussieu.fr/mcd_python/" target="_blank" rel="noopener">Mars Climate Database</a><p>LMD, Open University, IAA, ESA and CNES. Used in v4 to check the cold score of every Mars target.</p></div>
+        </div>
+
+        <h4 class="grp">Maps and images</h4>
+        <div class="srcgrid">
+          <div class="src"><span class="tag t-nasa">NASA</span><a href="https://svs.gsfc.nasa.gov/4720/" target="_blank" rel="noopener">Moon map: LROC color map</a><p>NASA Scientific Visualization Studio, adapted from the LROC WAC mosaic (Arizona State University). Made for looks, not science.</p></div>
+          <div class="src"><span class="tag t-nasa">NASA</span><a href="https://science.nasa.gov/asset/hubble/mars-projection-map/" target="_blank" rel="noopener">Mars map: Hubble projection</a><p>NASA, ESA, J. Bell (Cornell University) and M. Wolff (Space Science Institute). It stops at about 82&deg; latitude, so the polar edges are filled in.</p></div>
+          <div class="src"><span class="tag t-nasa">NASA</span><a href="https://visibleearth.nasa.gov/collection/1484/blue-marble" target="_blank" rel="noopener">Blue Marble Next Generation</a><p>2004 monthly composites, fetched live from NASA GIBS for the satellite image of each Earth area.</p></div>
+          <div class="src"><span class="tag t-nasa">NASA</span><a href="https://worldview.earthdata.nasa.gov/" target="_blank" rel="noopener">Worldview / GIBS</a> &middot; <a href="https://search.earthdata.nasa.gov" target="_blank" rel="noopener">Earthdata Search</a><p>Live Earth layers: MODIS land surface temperature, snow cover and vegetation, ASTER GDEM elevation, Blue Marble shaded relief. They load from NASA when you open a layer, so they need an internet connection.</p></div>
+          <div class="src"><span class="tag t-other">Other</span><a href="https://www.vemaps.com" target="_blank" rel="noopener">Vemaps world map</a><p>The Earth coastlines were traced from it. See the limits section about its licence.</p></div>
+        </div>
+        <p class="why-kept">None of these maps or images is used for any score.</p>
+
+        <h4 class="grp">The 16 small named sites</h4>
+        <p>Each small site shows its own reference in Step 3: NASA, ESA, USGS, the US National Park Service, a NASA-funded expedition or a scientific paper. Two come from museum or news pages and are marked as such. We picked them from pages that name them as analog or training sites; three we could not source (a Utah desert site, Teide and Pinacate) were left out.</p>
+
+        <h4 class="grp">Background references we consulted</h4>
+        <p>Not used to compute any current score: <a href="https://www.lroc.asu.edu/atlases/pits/1" target="_blank" rel="noopener">LROC Pits Atlas</a>, the <a href="https://astrogeology.usgs.gov/search/map/mars_global_cave_candidate_catalog_v1_cushing" target="_blank" rel="noopener">USGS Mars cave candidate catalog</a>, <a href="https://crism.jhuapl.edu/" target="_blank" rel="noopener">CRISM</a>, the <a href="https://figshare.com/articles/dataset/Global_Aridity_Index_and_Potential_Evapotranspiration_ET0_Climate_Database_v2/7504448/3" target="_blank" rel="noopener">Global Aridity Index</a>, the original <a href="http://www.passc.net/EarthImpactDatabase/" target="_blank" rel="noopener">Earth Impact Database</a> site and <a href="https://www.nasa.gov/analog-missions/" target="_blank" rel="noopener">NASA analog missions</a>.</p>
+      </section>
+
+      <!-- 2 SCORES -->
+      <section class="blk" id="src-scores" aria-labelledby="ss-h">
+        <h3 id="ss-h"><span class="bn">2</span>How the Earth scores work</h3>
+        <p class="lead">Every score runs from 0 to 100. Four are read straight from a measured grid; seven are proxies that count things a dataset happens to list. The formulas are written in the header of <code>tools/build-v32.js</code>.</p>
+        <div class="tblwrap">
+          <table class="ftbl">
+            <thead><tr><th>Feature</th><th>How the 0&ndash;100 score is made</th><th>Source</th><th>Kind</th></tr></thead>
+            <tbody>
+              <tr><th>Extreme cold</th><td>100 at &minus;50&nbsp;&deg;C yearly average or colder, 0 at +25&nbsp;&deg;C.</td><td>NASA POWER</td><td><span class="kind g">grid</span></td></tr>
+              <tr><th>Dryness</th><td>Log scale on rain: 100 at 0.03&nbsp;mm a day or less, 0 at 6&nbsp;mm or more.</td><td>NASA POWER</td><td><span class="kind g">grid</span></td></tr>
+              <tr><th>Rugged ground</th><td>Spread of 9 heights: 0 for flat ground, 100 for 800&nbsp;m or more.</td><td>NOAA ETOPO1</td><td><span class="kind g">grid</span></td></tr>
+              <tr><th>Ice and frozen water</th><td>The larger of surface ice (ice sheet, or snow depth up to 50&nbsp;cm) and ground ice. Permafrost is <i>inferred</i> from yearly air temperature: 0 at &minus;1&nbsp;&deg;C, 100 at &minus;8&nbsp;&deg;C.</td><td>NASA POWER</td><td><span class="kind g">grid</span></td></tr>
+              <tr><th>Volcanic basalt rock</th><td>Log-scale count of volcanoes; basaltic types count 1, others 0.25.</td><td>NOAA NCEI</td><td><span class="kind p">proxy</span></td></tr>
+              <tr><th>Crater-impact geology</th><td>Log-scale sum of crater diameters in the area.</td><td>NASA Earth Impact Database</td><td><span class="kind p">proxy</span></td></tr>
+              <tr><th>Lava-tube terrain</th><td>Log-scale count of basaltic volcanoes (half weight). Since v5.2 this is only a proxy: no reliable global lava-tube list exists.</td><td>NOAA NCEI</td><td><span class="kind p">proxy</span></td></tr>
+              <tr><th>Fine, abrasive dust</th><td>Share of 9 sample points on young loose surface units, scaled by dryness.</td><td>Macrostrat, NASA POWER</td><td><span class="kind p">proxy</span></td></tr>
+              <tr><th>Remoteness</th><td>Mean distance from 9 points to a town of 20,000 or more, log scale: 0 at 30&nbsp;km, 100 at 1,500&nbsp;km.</td><td>Natural Earth</td><td><span class="kind p">proxy</span></td></tr>
+              <tr><th>Salts and minerals</th><td>Share of points on carbonate, clay, mudstone, evaporite, gypsum or salt rock, plus playas.</td><td>Macrostrat, Natural Earth</td><td><span class="kind p">proxy</span></td></tr>
+              <tr><th>Pale highland rock</th><td>Share of points on anorthosite, gabbro, norite or troctolite.</td><td>Macrostrat</td><td><span class="kind p">proxy</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="grp">From scores to a ranking</h4>
+        <ul class="tidy">
+          <li><b>Matching.</b> For each feature we measure how close the target&rsquo;s and the area&rsquo;s scores are, then blend them into one similarity from 0 to 100. A target&rsquo;s signature features count three times as much, and your sliders change the weights too (<code>js/match.js</code>). Bands: Loose 0&ndash;33, Partial 34&ndash;66, Close 67&ndash;100. It is not a probability and not calibrated: a random pairing scores around 40 to 50.</li>
+          <li><b>Stability line.</b> The page re-ranks 1,000 times with seeded random nudges (weights &times;0.5 to 1.5, target scores &plusmn;5, Earth scores &plusmn;3 for cold, dryness and relief and &plusmn;5 for the rest, all kept between 0 and 100) and shows how often each top area stays first or in the top five. Each percentage has a sampling error of about &plusmn;3 points. The nudge sizes and the bands (Stable at 70% or more, Fairly stable at 40% or more) are our choices. The seed makes the result repeatable.</li>
+          <li><b>Like-for-like elevation.</b> The Earth line is 40&nbsp;km long with a point every 4&nbsp;km; Moon and Mars lines run 1 to 330&nbsp;km and are finer. The page puts both on a 4&nbsp;km spacing and the same window (long lines are cut into 40&nbsp;km windows and the median is used) before comparing height range and slope. Lines under 8&nbsp;km are too short to compare.</li>
+          <li><b>The 16 small sites</b> use the same formulas on a 1&deg; box. The 9 sample points are about 37&nbsp;km apart, the NASA POWER value is the roughly 50&nbsp;km climate cell at the centre, and the height line has a point every 2&nbsp;km (<code>tools/build-v5.js</code>). A measured correction (v5.1) adjusts the six features where it could be fitted.</li>
+        </ul>
+      </section>
+
+      <!-- 3 HOW IT WAS BUILT -->
+      <section class="blk" id="src-built" aria-labelledby="sb-h">
+        <h3 id="sb-h"><span class="bn">3</span>How it was built</h3>
+        <p class="lead">From the question to the finished page, in the order we did it.</p>
+        <ol class="flow">
+          <li><div><b>The idea and the Moon and Mars lists are ours.</b><p>Our team chose the question and the 14 original Moon and Mars targets, then added six from NASA and ESA lists in v4. Each target is described with 11 scores from 0 to 100 (a twelfth, crew facilities, was removed in v5 because every target scored 100 on it).</p></div></li>
+          <li><div><b>Cut the Earth into candidate areas.</b><p>A regular 5&deg; grid (about 550 km a cell) was laid over the land outlines and cells whose centre falls on land were kept: 806 cells (<code>tools/make-grid.js</code>). Nothing is pre-selected. Earlier versions picked 35 cells because they matched the targets and then ranked them against the same targets, which was circular; that step is gone. Area names come from the region and coordinates, and a name is shown only if it is specific.</p></div></li>
+          <li><div><b>Gather the Earth data.</b><p>Climate, heights, volcanoes, craters, stations, rock types and towns were collected for every cell and for the 16 small sites from the sources above, through a browser because the build environment had no direct internet access. The raw numbers are kept in <code>tools/</code> so every score can be traced. A correction for the small sites was measured on 36 random cells (v5.1).</p></div></li>
+          <li><div><b>Compute the scores and write one data file.</b><p><code>tools/build-data.js</code> packed the Moon and Mars lists and base maps into <code>data/data.js</code>; <code>tools/build-v32.js</code> adds the Earth areas and their scores; later scripts (<code>build-v5.js</code>, <code>build-v51.js</code>, <code>build-v52.js</code>) add the small sites, the correction and the NASA and COMNAP data.</p></div></li>
+          <li><div><b>Match and rank in your browser.</b><p>The whole list is ranked live when you press &ldquo;See the closest places&rdquo;. The page shows the top 35 (fewer if the station filter leaves fewer).</p></div></li>
+          <li><div><b>Draw the maps.</b><p>All three maps use the same flat layout: x&nbsp;=&nbsp;(longitude&nbsp;+&nbsp;180)&nbsp;&times;&nbsp;2 and y&nbsp;=&nbsp;(90&nbsp;&minus;&nbsp;latitude)&nbsp;&times;&nbsp;2 on a 720&nbsp;&times;&nbsp;360 grid, so pins and layers line up. The Moon and Mars maps are resized JPEG copies of the NASA images in <code>assets/</code>. The Earth map is land and sea outlines traced into polygons (in <code>data/data.js</code>) and drawn as SVG with grid lines every 30&deg;; it is for locating things, not measuring coastlines. Pins, zoom and colours are our own code (<code>js/map.js</code>, <code>js/app.js</code>), with no map library. The layer menus colour pins by a feature or add full-map NASA layers; we left out layers that were too noisy or incomplete (THEMIS infrared and the Diviner maximum and minimum maps). The layer list is in <code>tools/set-layers.js</code>.</p></div></li>
+          <li><div><b>Build the page.</b><p>Plain HTML, CSS and JavaScript with no libraries. Everything is static and can be hosted anywhere. The Moon is themed black and grey, Mars red.</p></div></li>
+          <li><div><b>Test it.</b><p>A headless browser (Playwright) steps through all 20 targets checking for script errors, and runs the three steps at desktop, tablet and phone widths checking for sideways scrolling and clipped text. We review the screenshots.</p></div></li>
+          <li><div><b>AI help.</b><p>Claude, an AI assistant made by Anthropic, wrote the code from our design. The concept, the data choices and the review are ours.</p></div></li>
+        </ol>
+        <p class="why-kept"><b>What it needed:</b> the NASA, NOAA and other datasets named above, an internet connection for the live NASA layers, Node.js to prepare the data, Playwright to test, and Claude to write the code. <code>README.md</code> lists every file in <code>tools/</code> and how to run them.</p>
+      </section>
+
+      <!-- 4 VERSIONS -->
+      <section class="blk" id="src-versions" aria-labelledby="sv-h">
+        <h3 id="sv-h"><span class="bn">4</span>Version history</h3>
+        <p class="lead">Newest first. Open an entry for details.</p>
+        <div class="vers">
+          <details open><summary><span class="vn">6</span>Final version: this page reorganised</summary><p>The Sources &amp; how it was built page was rewritten into five sections with source cards, a table of the 11 Earth scores, a step-by-step build flow, this history and grouped limits. No score, ranking or data changed.</p></details>
+          <details><summary><span class="vn">5.4.1</span>Layout: titles and list</summary><p>The description under each step title now sits below the title. In Step 3 the list of most similar areas starts at the top, next to the target description, instead of below it.</p></details>
+          <details><summary><span class="vn">5.4</span>Layout: Step 3 space</summary><p>The big similarity score sits beside the area name, the facts panel is a 3 &times; 3 grid, the like-for-like table fills its card, and the page is wider (1320 px instead of 1200 px). No score changed.</p></details>
+          <details><summary><span class="vn">5.3</span>Bug fixes</summary><p>(1) Turning on the Antarctic-station filter (18 areas) crashed Step 3 because the code assumed 35 areas; the map, list and headings now adapt. (2) On phone-sized screens the &ldquo;Map layer&rdquo; menu made the page scroll sideways; it now wraps. No score changed.</p></details>
+          <details><summary><span class="vn">5.2</span>Wikidata removed</summary><p>Craters now come from NASA&rsquo;s Earth Impact Database table, stations from COMNAP (Antarctic only), and the lava-tube term was dropped from the caves score (<code>tools/build-v52.js</code>, data in <code>tools/eid_nasa_ares.csv.txt</code> and <code>tools/comnap_facilities.csv.txt</code>). Effects: 119 areas now have impact craters (the NASA table has 182 structures worldwide, against a crowd-sourced count of 179 craters before); the station filter matches 18 Antarctic areas (before, 125 areas worldwide from a crowd-sourced list); a few areas lost a lava-tube bonus. The v5.1 correction did not use these three scores, so it is unchanged.</p></details>
+          <details><summary><span class="vn">5.1</span>Measured correction for small sites</summary><p>The v5 guess that small boxes score more extremely was tested and <b>not</b> supported. 36 random cells (<code>tools/sample_cells.json</code>) were re-scored as 1&deg; boxes (<code>tools/sample_boxes_raw.json</code>, gathered 15 Nov 2026) and a line, cell score = a + b &times; box score, was fitted per feature (<code>tools/calibrate-v51.js</code>). A fit is used only if r&sup2; is at least 0.25 and the slope is between 0 and 1.5 (<code>tools/build-v51.js</code>); the uncalibrated box scores stay on each small site&rsquo;s card. The sample is small (36 boxes, 6 in Antarctica), so each fit has real uncertainty.</p></details>
+          <details><summary><span class="vn">5</span>Small sites, station filter, NASA-only facts</summary><p>(1) Crew facilities stopped being a match feature and became a Step 2 filter. (2) 16 small named sites were added, with a &ldquo;small site&rdquo; tag. (3) Step 3 facts now come only from NASA POWER, NOAA ETOPO1 and NOAA NCEI. (4) A site shows its name only if it has a specific one. (5) Step 1 shows 5 sites at a time. (6) A section on how the maps were made.</p></details>
+          <details><summary><span class="vn">4.1</span>Fixes after a reviewer&rsquo;s comments</summary><p>Stability uses 1,000 runs (200 before) and keeps the noise within 0&ndash;100; the 14 original targets carry a &ldquo;why it is on the list&rdquo; and score-basis note; the stability panel warns when most of the top 10 are neighbouring polar cells.</p></details>
+          <details><summary><span class="vn">4</span>Six new areas and a facts panel</summary><p>Three Moon and three Mars areas were added from the official NASA and ESA lists (estimated scores, except Mars cold from the Mars Climate Database). Step 3 gained a facts panel and a satellite image for the selected Earth area.</p></details>
+          <details><summary><span class="vn">3.2</span>Every Earth area is a candidate</summary><p>All 806 cells are scored on all features from named datasets and ranked live; added the stability line and the like-for-like elevation comparison.</p></details>
+          <details><summary><span class="vn">2.3</span>Map layers</summary><p>Layer menus colour each pin by a feature score or a measured value and offer full-map NASA layers.</p></details>
+          <details><summary><span class="vn">2.2</span>Pre-chosen Earth areas</summary><p>35 Earth areas were chosen because they matched the targets on four scores and then ranked against the same targets. This was circular and was replaced in 3.2.</p></details>
+        </div>
+      </section>
+
+      <!-- 5 LIMITS -->
+      <section class="blk" id="src-limits" aria-labelledby="sl-h">
+        <h3 id="sl-h"><span class="bn">5</span>Known limits and next steps</h3>
+        <div class="limgrid">
+          <div class="limcard"><h4>Earth areas</h4><ul>
+            <li>Most areas are whole 5&deg; cells, about 550 km across, so islands, craters and lava tubes are mostly not captured. A cell is kept by its centre point, so some coastal cells are missing and some mostly-sea cells are included. Polar cells are smaller on the ground and neighbouring ones have almost the same climate.</li>
+            <li>The proxy scores depend on coverage: the crater table has only confirmed impact structures (182 worldwide, so most areas score 0), the station list covers only Antarctica, the caves score is just basaltic volcanoes, and the rock map is sampled at 9 points. Highland rock is near zero almost everywhere on Earth.</li>
+            <li>Antarctic and Greenland cells have no snow measurement, so they are treated as full ice cover. Permafrost is inferred from air temperature, not observed. ETOPO1 terrain is about 2 km resolution.</li>
+            <li>Satellite images show a whole 5&deg; area, not a close-up, and are loaded live from NASA.</li>
+          </ul></div>
+          <div class="limcard"><h4>The 16 small sites</h4><ul>
+            <li>They are not a fair draw: we chose them <i>because</i> they are known analog sites. They appear in the top 35 about 0.95 times per target, against 0.7 if drawn at random from all 822. Read their position as &ldquo;a known analog that also scores well&rdquo;.</li>
+            <li>Test (v5.1): cold, dryness and ice are identical in boxes and cells (r&sup2; = 1.00, because the NASA climate grid is about 50&nbsp;km either way); height variation is about 2 points lower in boxes, remoteness 4 lower, salts and minerals 9 lower. Counts of volcanoes, craters and caves are lower in boxes (a box is about 1/25 of the ground), but almost no sampled box had any, so no correction could be fitted for volcanic basalt, impact geology, caves, dust or highland rock.</li>
+            <li>Their climate is the roughly 50&nbsp;km NASA cell at the centre, which can differ a lot from a summit or valley floor (Mauna Kea is a clear example). Real analog areas can be small, so a match applies to one spot, not a whole region.</li>
+          </ul></div>
+          <div class="limcard"><h4>Moon, Mars and layers</h4><ul>
+            <li>Moon and Mars scores other than cold are hand-assigned estimates. Moon cold and ice come from published Diviner results, not yet computed from the raw files. The Lacus Mortis cold value (25) could not be verified. Mars cold is saturated: every Mars target colder than &minus;50&nbsp;&deg;C yearly mean scores 100.</li>
+            <li>The six v4 areas have no elevation line yet. Leibnitz Beta Plateau, also on NASA&rsquo;s list, was left out because we could not find coordinates for it. Pit sites have lines under 8&nbsp;km, too short for the like-for-like comparison.</li>
+            <li>Layers: the Mars thermal-inertia and brightness maps are lower detail on NASA Trek. Mars has no true global temperature map, so that layer is thermal inertia, not temperature. The Moon Diviner layer is night-time only, covers 60&deg;S to 60&deg;N and is streaky where coverage is thin. Earth temperature is one month (July 2025) and snow is January 2025, so they are examples, not yearly averages. Layers load from NASA and may change or go offline.</li>
+          </ul></div>
+          <div class="limcard"><h4>Before this is shared further</h4><ul>
+            <li>The world coastlines were traced from a Vemaps map; we have not confirmed that its licence allows reuse. Replacing them with Natural Earth coastlines would settle it.</li>
+            <li>Next steps we would take: compute Moon temperatures directly from Diviner files, find a global list of research stations and lava tubes of equal quality, and add more small sites that can be sourced to NASA, ESA or USGS pages.</li>
+          </ul></div>
+        </div>
+      </section>
+
+      <div class="nav-row"><a class="btn" href="#v=1">&larr; Back to the steps</a><span></span></div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Earth Analog Finder</b> &middot; built for the NASA Space Apps Challenge.</p>
+    <p>Data from NASA, NOAA, the Planetary Data System and LRO. Code written with help from Claude (Anthropic). Version 6 (final). The scores are for exploration only.</p>
+  </div>
+</footer>
+
+<script src="data/data.js"></script>
+<script src="js/match.js"></script>
+<script src="js/map.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

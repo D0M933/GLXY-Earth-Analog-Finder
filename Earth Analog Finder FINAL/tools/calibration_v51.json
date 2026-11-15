@@ -1,0 +1,123 @@
+{
+ "cold": {
+  "a": 0.009,
+  "b": 1.002,
+  "r2": 1,
+  "n": 36,
+  "sdBox": 30.2,
+  "sdCell": 30.3,
+  "meanBox": 32.1,
+  "meanCell": 32.2,
+  "used": true
+ },
+ "arid": {
+  "a": 0.168,
+  "b": 0.994,
+  "r2": 1,
+  "n": 36,
+  "sdBox": 22.1,
+  "sdCell": 21.9,
+  "meanBox": 35.9,
+  "meanCell": 35.9,
+  "used": true
+ },
+ "relief": {
+  "a": 1.931,
+  "b": 1.03,
+  "r2": 0.958,
+  "n": 36,
+  "sdBox": 21.1,
+  "sdCell": 22.2,
+  "meanBox": 14.4,
+  "meanCell": 16.8,
+  "used": true
+ },
+ "volc": {
+  "a": 4.861,
+  "b": 0,
+  "r2": 0,
+  "n": 36,
+  "sdBox": 0,
+  "sdCell": 18.3,
+  "meanBox": 0,
+  "meanCell": 4.9,
+  "used": false
+ },
+ "impact": {
+  "a": 6.143,
+  "b": 0.594,
+  "r2": 0.027,
+  "n": 36,
+  "sdBox": 4.9,
+  "sdCell": 17.9,
+  "meanBox": 0.8,
+  "meanCell": 6.6,
+  "used": false
+ },
+ "ice": {
+  "a": -0.077,
+  "b": 1,
+  "r2": 1,
+  "n": 36,
+  "sdBox": 43,
+  "sdCell": 43.1,
+  "meanBox": 39.6,
+  "meanCell": 39.5,
+  "used": true
+ },
+ "voids": {
+  "a": 4.056,
+  "b": 0,
+  "r2": 0,
+  "n": 36,
+  "sdBox": 0,
+  "sdCell": 17.1,
+  "meanBox": 0,
+  "meanCell": 4.1,
+  "used": false
+ },
+ "dust": {
+  "a": 4.635,
+  "b": 0.276,
+  "r2": 0.221,
+  "n": 36,
+  "sdBox": 20.9,
+  "sdCell": 12.3,
+  "meanBox": 15.9,
+  "meanCell": 9,
+  "used": false
+ },
+ "remote": {
+  "a": 9.439,
+  "b": 0.888,
+  "r2": 0.953,
+  "n": 36,
+  "sdBox": 38.6,
+  "sdCell": 35.1,
+  "meanBox": 45.1,
+  "meanCell": 49.5,
+  "used": true
+ },
+ "brine": {
+  "a": 7.863,
+  "b": 1.069,
+  "r2": 0.698,
+  "n": 36,
+  "sdBox": 22.9,
+  "sdCell": 29.3,
+  "meanBox": 13.1,
+  "meanCell": 21.9,
+  "used": true
+ },
+ "anor": {
+  "a": 4.639,
+  "b": 0,
+  "r2": 0,
+  "n": 36,
+  "sdBox": 0,
+  "sdCell": 19.5,
+  "meanBox": 0,
+  "meanCell": 4.6,
+  "used": false
+ }
+}

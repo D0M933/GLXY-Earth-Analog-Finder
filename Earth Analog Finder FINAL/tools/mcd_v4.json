@@ -1,0 +1,15 @@
+{
+ "method": "Mars Climate Database 6.2 (LMD/OU/IAA/ESA/CNES), climatology average-dust scenario, 2 m air temperature, mean of 12 seasons (Ls 15 to 345 step 30) x 8 local times (1.5 to 22.5 step 3) = 96 runs per site, run 14 Nov 2026",
+ "annualMeanAirK": {
+  "hp": 205.6,
+  "vm": 217.8,
+  "gc": 215.6,
+  "jz": 216.1,
+  "ap": 190.9,
+  "am": 197.4,
+  "dm": 198.9,
+  "ox": 216.4,
+  "mv": 213.4,
+  "gu": 210.8
+ }
+}
